@@ -1,0 +1,25 @@
+class Solution {
+    static int[] replaceWithRank(int arr[], int N) {
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        for(int i = 0 ; i < N ; i++){
+            minHeap.add(new int[]{arr[i],i});
+        }
+        
+        int[] res =  new int[N];
+        int rank = 1;
+        int prevVal = Integer.MIN_VALUE;
+        
+        while(!minHeap.isEmpty()){
+            int[] curr = minHeap.poll();
+            int val = curr[0];
+            int idx = curr[1];
+            if(val!=prevVal){
+                prevVal = val;
+                res[idx] = rank++;
+            }else{
+                res[idx] = rank - 1;
+            }
+        }
+        return res;
+    }
+}
