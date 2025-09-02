@@ -14,6 +14,6 @@ class Solution {
         while(!minHeap.isEmpty()){
             arr[idx] = minHeap.poll();
             idx++;
-        }
+        } 
     }
 }
